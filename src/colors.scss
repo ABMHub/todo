@@ -1,0 +1,17 @@
+// administração de cores
+
+$contraste: orange;
+$contraste2: rgb(255, 194, 80);
+$bg: whitesmoke;
+$font: black;
+
+body {
+    background-color: $bg;
+    color: $font;
+}
+header {
+    background-color: $contraste;
+}
+.links > a:hover {
+    background-color: $contraste2;
+}

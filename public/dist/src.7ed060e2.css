@@ -1,0 +1,36 @@
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    font-size: 50px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 13px;
+}
+.titulo {
+    font-family: "comic sans ms";
+}
+.links {
+    margin: auto 0;
+}
+
+.links > a {
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.sidebar {
+    margin-top: 70px;
+}
+body {
+  background-color: whitesmoke;
+  color: black; }
+
+header {
+  background-color: orange; }
+
+.links > a:hover {
+  background-color: #ffc250; }
+
+
+/*# sourceMappingURL=/src.7ed060e2.css.map */
