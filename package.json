@@ -1,0 +1,14 @@
+{
+  "name": "To-Do",
+  "version": "1.0.0",
+  "description": "Atividade trainee CJR - lista de afazeres",
+  "main": "index.js",
+  "repository": "https://github.com/ABMHub/todo.git",
+  "author": "Lucas ABM",
+  "license": "MIT",
+  "dependencies": {
+    "node-sass": "^4.14.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}

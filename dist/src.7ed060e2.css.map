@@ -1,0 +1,1 @@
+{"version":3,"sources":["..\\src\\index.scss"],"names":[],"mappings":"AAIA,IAAI,CAAC;EACD,gBAAgB,EALZ,OAAO;EAMX,KAAK,EAJD,OAAO,GAMd","file":"src.7ed060e2.css","sourceRoot":"..\\public","sourcesContent":["$black: #000000;\r\n$dark: #2d2d2d;\r\n$white: #ffffff;\r\n\r\nbody {\r\n    background-color: $black;\r\n    color: $white;\r\n    \r\n}"]}
