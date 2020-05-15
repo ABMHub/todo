@@ -20,7 +20,32 @@ header {
     margin-top: 10px;
 }
 .sidebar {
-    margin-top: 70px;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    bottom: 0;
+
+    width: 350px;
+
+    border-style: solid;
+    border-width: 0 5px 0 0;
+    border-color: orange;
+
+    padding-left: 50px;
+
+    word-wrap: break-word;
+}
+.textArea {
+    font-size: 50px;
+    margin: 100px auto;
+}
+.corpo {
+    position: fixed;
+    display: flex;
+    top: 70px;
+    left: 0;
+    right: 0;
+    justify-content: center;
 }
 body {
   background-color: whitesmoke;
@@ -31,6 +56,10 @@ header {
 
 .links > a:hover {
   background-color: #ffc250; }
+
+.sidebar {
+  background-color: black;
+  color: white; }
 
 
 /*# sourceMappingURL=/src.7ed060e2.css.map */

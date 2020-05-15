@@ -1,9 +1,9 @@
 import React from "react";
-import styles from "./header.module.css";
+import "./header.css";
 
 const Header = () => (
     <header>
-        <div className={styles.titulo}>
+        <div className = "titulo">
             Tchu-Du
         </div>
         <div className="links">

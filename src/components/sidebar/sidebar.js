@@ -1,10 +1,18 @@
 import React from "react"
-import styles from "./sidebar.module.css"
+import "./sidebar.css"
 
-const Sidebar = () => (
-    <div className="sidebar">
-        aaaaaaaa
-    </div>
-)
+
+function Sidebar ({mostra}) {
+    if (mostra == 0) {
+        return (
+            <></>
+        )
+    }
+    else {
+        return (
+            <div className="sidebar"><h1>EU TENHO UMA SIDEBAR KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK</h1></div>
+        )
+    }
+}
 
 export default Sidebar

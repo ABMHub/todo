@@ -28352,7 +28352,7 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":"../../../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"../src/components/header/header.module.css":[function(require,module,exports) {
+},{"./bundle-url":"../../../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"../src/components/header/header.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -28367,13 +28367,13 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _headerModule = _interopRequireDefault(require("./header.module.css"));
+require("./header.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Header = function Header() {
   return /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("div", {
-    className: _headerModule.default.titulo
+    className: "titulo"
   }, "Tchu-Du"), /*#__PURE__*/_react.default.createElement("div", {
     className: "links"
   }, /*#__PURE__*/_react.default.createElement("a", null, "Home"), "\xA0", /*#__PURE__*/_react.default.createElement("a", null, "Link 2"), "\xA0", /*#__PURE__*/_react.default.createElement("a", null, "Link 3"), "\xA0", /*#__PURE__*/_react.default.createElement("a", null, "Link 4")));
@@ -28381,7 +28381,7 @@ var Header = function Header() {
 
 var _default = Header;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./header.module.css":"../src/components/header/header.module.css"}],"../src/components/sidebar/sidebar.module.css":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./header.css":"../src/components/header/header.css"}],"../src/components/sidebar/sidebar.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -28396,19 +28396,30 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _sidebarModule = _interopRequireDefault(require("./sidebar.module.css"));
+require("./sidebar.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Sidebar = function Sidebar() {
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "sidebar"
-  }, "aaaaaaaa");
-};
+function Sidebar(_ref) {
+  var mostra = _ref.mostra;
+
+  if (mostra == 0) {
+    return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null);
+  } else {
+    return /*#__PURE__*/_react.default.createElement("div", {
+      className: "sidebar"
+    }, /*#__PURE__*/_react.default.createElement("h1", null, "EU TENHO UMA SIDEBAR KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK"));
+  }
+}
 
 var _default = Sidebar;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./sidebar.module.css":"../src/components/sidebar/sidebar.module.css"}],"../src/main.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./sidebar.css":"../src/components/sidebar/sidebar.css"}],"../src/components/principal/principal.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../src/components/principal/principal.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28418,19 +28429,86 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+require("./principal.css");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Principal = function Principal() {
+  return /*#__PURE__*/_react.default.createElement("form", null, /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    className: "textArea"
+  }));
+};
+
+var _default = Principal;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","./principal.css":"../src/components/principal/principal.css"}],"../src/main.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../src/main.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
 var _header = _interopRequireDefault(require("./components/header/header"));
 
 var _sidebar = _interopRequireDefault(require("./components/sidebar/sidebar"));
 
+var _principal = _interopRequireDefault(require("./components/principal/principal"));
+
+require("./main.css");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Main = function Main() {
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_header.default, null), /*#__PURE__*/_react.default.createElement(_sidebar.default, null));
-};
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function Main() {
+  var _useState = (0, _react.useState)(0),
+      _useState2 = _slicedToArray(_useState, 2),
+      numero = _useState2[0],
+      numeroEstado = _useState2[1];
+
+  _react.default.useEffect(function () {
+    alert(numero);
+  }, [numero]);
+
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_header.default, null), /*#__PURE__*/_react.default.createElement("div", {
+    className: "corpo"
+  }, /*#__PURE__*/_react.default.createElement(_principal.default, null), /*#__PURE__*/_react.default.createElement("button", {
+    onClick: function onClick(ev) {
+      return numeroEstado(function (numero) {
+        return !numero;
+      });
+    }
+  }), /*#__PURE__*/_react.default.createElement(_sidebar.default, {
+    mostra: numero
+  })));
+}
 
 var _default = Main;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./components/header/header":"../src/components/header/header.js","./components/sidebar/sidebar":"../src/components/sidebar/sidebar.js"}],"../src/colors.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./components/header/header":"../src/components/header/header.js","./components/sidebar/sidebar":"../src/components/sidebar/sidebar.js","./components/principal/principal":"../src/components/principal/principal.js","./main.css":"../src/main.css"}],"../src/colors.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -28477,7 +28555,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50544" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51276" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
