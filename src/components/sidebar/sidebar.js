@@ -1,8 +1,10 @@
 import React from "react"
 import "./sidebar.css"
 
+function Sidebar ({mostra, noturno}) {
+    let bg = noturno ? "black" : "rgb(211, 211, 211)";
+    let borda = "orange"
 
-function Sidebar ({mostra}) {
     if (mostra == 0) {
         return (
             <></>
@@ -10,7 +12,9 @@ function Sidebar ({mostra}) {
     }
     else {
         return (
-            <div className="sidebar"><h1>EU TENHO UMA SIDEBAR KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK</h1></div>
+            <div className="sidebar" style={{backgroundColor: bg, borderColor: borda}}>
+                <button onClick={ev => console.log("funciona")}>Modo Noturno</button>
+            </div>
         )
     }
 }

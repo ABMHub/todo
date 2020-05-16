@@ -28371,13 +28371,21 @@ require("./header.css");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Header = function Header() {
-  return /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("div", {
+function Header(_ref) {
+  var noturno = _ref.noturno;
+  var fonte = noturno ? "orange" : "black";
+  var bg = noturno ? "black" : "orange";
+  return /*#__PURE__*/_react.default.createElement("header", {
+    style: {
+      color: fonte,
+      backgroundColor: bg
+    }
+  }, /*#__PURE__*/_react.default.createElement("div", {
     className: "titulo"
   }, "Tchu-Du"), /*#__PURE__*/_react.default.createElement("div", {
     className: "links"
   }, /*#__PURE__*/_react.default.createElement("a", null, "Home"), "\xA0", /*#__PURE__*/_react.default.createElement("a", null, "Link 2"), "\xA0", /*#__PURE__*/_react.default.createElement("a", null, "Link 3"), "\xA0", /*#__PURE__*/_react.default.createElement("a", null, "Link 4")));
-};
+}
 
 var _default = Header;
 exports.default = _default;
@@ -28401,14 +28409,25 @@ require("./sidebar.css");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Sidebar(_ref) {
-  var mostra = _ref.mostra;
+  var mostra = _ref.mostra,
+      noturno = _ref.noturno;
+  var bg = noturno ? "black" : "rgb(211, 211, 211)";
+  var borda = "orange";
 
   if (mostra == 0) {
     return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null);
   } else {
     return /*#__PURE__*/_react.default.createElement("div", {
-      className: "sidebar"
-    }, /*#__PURE__*/_react.default.createElement("h1", null, "EU TENHO UMA SIDEBAR KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK"));
+      className: "sidebar",
+      style: {
+        backgroundColor: bg,
+        borderColor: borda
+      }
+    }, /*#__PURE__*/_react.default.createElement("button", {
+      onClick: function onClick(ev) {
+        return console.log("funciona");
+      }
+    }, "Modo Noturno"));
   }
 }
 
@@ -28442,7 +28461,12 @@ var Principal = function Principal() {
 
 var _default = Principal;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./principal.css":"../src/components/principal/principal.css"}],"../src/main.css":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./principal.css":"../src/components/principal/principal.css"}],"../src/colors.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../src/main.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -28462,6 +28486,8 @@ var _header = _interopRequireDefault(require("./components/header/header"));
 var _sidebar = _interopRequireDefault(require("./components/sidebar/sidebar"));
 
 var _principal = _interopRequireDefault(require("./components/principal/principal"));
+
+require("./colors.scss");
 
 require("./main.css");
 
@@ -28484,36 +28510,49 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function Main() {
-  var _useState = (0, _react.useState)(0),
+  var _useState = (0, _react.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
-      numero = _useState2[0],
-      numeroEstado = _useState2[1];
+      sideOn = _useState2[0],
+      sideOnEstado = _useState2[1];
 
-  _react.default.useEffect(function () {
-    alert(numero);
-  }, [numero]);
+  var _useState3 = (0, _react.useState)(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      notOn = _useState4[0],
+      notOnEstado = _useState4[1];
 
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_header.default, null), /*#__PURE__*/_react.default.createElement("div", {
-    className: "corpo"
+  var contraste = "orange";
+  var contraste2 = "rgb(255, 194, 80)";
+  var bg = notOn ? "#2d2d2d" : "whitesmoke";
+  var bgsd = "rgb(211, 211, 211)";
+  var font = "black";
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_header.default, {
+    noturno: notOn
+  }), /*#__PURE__*/_react.default.createElement("div", {
+    className: "corpo",
+    style: {
+      backgroundColor: bg
+    }
   }, /*#__PURE__*/_react.default.createElement(_principal.default, null), /*#__PURE__*/_react.default.createElement("button", {
     onClick: function onClick(ev) {
-      return numeroEstado(function (numero) {
-        return !numero;
+      return sideOnEstado(function (sideOn) {
+        return !sideOn;
+      });
+    }
+  }), /*#__PURE__*/_react.default.createElement("button", {
+    onClick: function onClick(ev) {
+      return notOnEstado(function (notOn) {
+        return !notOn;
       });
     }
   }), /*#__PURE__*/_react.default.createElement(_sidebar.default, {
-    mostra: numero
+    mostra: sideOn,
+    noturno: notOn
   })));
 }
 
 var _default = Main;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./components/header/header":"../src/components/header/header.js","./components/sidebar/sidebar":"../src/components/sidebar/sidebar.js","./components/principal/principal":"../src/components/principal/principal.js","./main.css":"../src/main.css"}],"../src/colors.scss":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../../../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../src/index.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./components/header/header":"../src/components/header/header.js","./components/sidebar/sidebar":"../src/components/sidebar/sidebar.js","./components/principal/principal":"../src/components/principal/principal.js","./colors.scss":"../src/colors.scss","./main.css":"../src/main.css"}],"../src/index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -28522,12 +28561,10 @@ var _reactDom = _interopRequireDefault(require("react-dom"));
 
 var _main = _interopRequireDefault(require("./main.js"));
 
-require("./colors.scss");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _reactDom.default.render( /*#__PURE__*/_react.default.createElement(_main.default, null), document.getElementById("root"));
-},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./main.js":"../src/main.js","./colors.scss":"../src/colors.scss"}],"../../../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./main.js":"../src/main.js"}],"../../../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -28555,7 +28592,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51276" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51106" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -3,6 +3,7 @@
 $contraste: orange;
 $contraste2: rgb(255, 194, 80);
 $bg: whitesmoke;
+$bgsd: rgb(211, 211, 211);
 $font: black;
 
 body {
@@ -16,6 +17,7 @@ header {
     background-color: $contraste2;
 }
 .sidebar {
-    background-color: black;
-    color: white;
+    background-color: $bgsd;
+    color: $font;
+    border-color: $contraste;
 }
