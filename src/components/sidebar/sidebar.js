@@ -13,7 +13,6 @@ function Sidebar ({mostra, noturno}) {
     else {
         return (
             <div className="sidebar" style={{backgroundColor: bg, borderColor: borda}}>
-                <button onClick={ev => console.log("funciona")}>Modo Noturno</button>
             </div>
         )
     }
