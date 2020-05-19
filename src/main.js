@@ -5,10 +5,9 @@ import Sidebar from "./components/sidebar/sidebar";
 import Principal from "./components/principal/principal"
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faBars, faLightbulb } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faLightbulb, faCircle, faCheckCircle } from '@fortawesome/free-solid-svg-icons'
 
-library.add(fab, faBars, faLightbulb)
+library.add(faBars, faLightbulb, faCircle, faCheckCircle)
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
@@ -21,7 +20,7 @@ function Main () {
     
     let bg = notOn ? "#2d2d2d" : "whitesmoke";
     let font = notOn ? "orange" : "black";
-    
+
     return (
         <>
             <Header noturno = {notOn}/>

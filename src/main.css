@@ -1,11 +1,9 @@
 .corpo {
     position: fixed;
-    display: flex;
     top: 70px;
     left: 0;
     right: 0;
     bottom: 0;
-    justify-content: center;
 }
 
 .botaoNoturno {

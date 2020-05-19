@@ -1,4 +1,45 @@
 .textArea {
     font-size: 50px;
-    margin: 100px auto;
+    margin: 100px auto 0;
+    width: 650px;
+}
+
+input {
+    display: flex;
+    justify-content: center;
+}
+
+.checkbox {
+    display: flex;
+    justify-content: space-between;
+    
+    font-size: 50px;
+    width: 630px;
+    padding: 0 10px;
+    margin: 4px auto;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5px;
+    border-color: grey;
+    
+    background-color: white;
+
+    overflow: hidden;
+}
+
+.check {
+    padding-right: 5px;
+}
+.check:hover {
+    cursor: pointer;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
 }
