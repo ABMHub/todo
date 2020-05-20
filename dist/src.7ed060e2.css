@@ -74,6 +74,13 @@ input {
 .check:hover {
     cursor: pointer;
 }
+.lixo {
+    padding-left: 5px;
+}
+.lixo:hover {
+    color: red;
+    cursor: pointer;
+}
 
 .buttons {
     display: flex;

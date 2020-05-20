@@ -32177,6 +32177,12 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -32198,15 +32204,14 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function Principal() {
+  var vetor = [];
+
   var _useState = (0, _react.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),
       text = _useState2[0],
       setText = _useState2[1];
 
-  var _useState3 = (0, _react.useState)([{
-    lista: null,
-    flag: false
-  }]),
+  var _useState3 = (0, _react.useState)(vetor),
       _useState4 = _slicedToArray(_useState3, 2),
       list = _useState4[0],
       setList = _useState4[1];
@@ -32216,45 +32221,90 @@ function Principal() {
       filter = _useState6[0],
       setFilter = _useState6[1];
 
-  var Todo = function Todo(event) {
+  var AddToDo = function AddToDo(event) {
     event.preventDefault();
     if (text) setList([].concat(_toConsumableArray(list), [{
       lista: text,
-      flag: true
+      flag: false
     }]));
     setText(function (text) {
       return '';
     });
-  }; //filtro 0 == sem filtro, filtro 1 == só completas, filtro 2 == só incompletas
+  };
+
+  function checkToDo(index) {
+    setList(list.map(function (el, i) {
+      if (i === index) {
+        return _objectSpread(_objectSpread({}, el), {}, {
+          flag: !el.flag
+        });
+      } else {
+        return el;
+      }
+    }));
+  }
+
+  function delToDo(index) {
+    setList(list.map(function (el, i) {
+      if (i === index) {
+        return _objectSpread(_objectSpread({}, el), {}, {
+          lista: null
+        });
+      } else {
+        return el;
+      }
+    }));
+  } //filtro 0 == sem filtro, filtro 1 == só completas, filtro 2 == só incompletas
 
 
   function Item(_ref) {
     var element = _ref.element,
         filtro = _ref.filtro,
         index = _ref.index;
-    console.log("aaaaaaaa" + list[index].lista);
 
     if (filtro == 0 || filtro == 1 && element.flag == 1 || filtro == 2 && element.flag == 0) {
-      if (element.lista) return /*#__PURE__*/_react.default.createElement("div", {
-        className: "checkbox",
-        key: index
-      }, /*#__PURE__*/_react.default.createElement("div", null, console.log(element.lista), /*#__PURE__*/_react.default.createElement("a", {
-        onClick: function onClick(e) {
-          return setList({
-            flag: false
-          });
+      if (element.lista) return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
+        className: "checkbox"
+      }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("a", {
+        onClick: function onClick(ev) {
+          return checkToDo(index);
         }
       }, /*#__PURE__*/_react.default.createElement(_reactFontawesome.FontAwesomeIcon, {
         className: "check",
         icon: element.flag ? "check-circle" : "circle"
-      }))), /*#__PURE__*/_react.default.createElement("div", null, element.lista, " ", console.log(element.flag)));
+      }))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", {
+        style: element.flag ? {
+          textDecoration: 'line-through'
+        } : {
+          textDecoration: 'none'
+        }
+      }, element.lista), /*#__PURE__*/_react.default.createElement(_reactFontawesome.FontAwesomeIcon, {
+        icon: "trash-alt",
+        className: "lixo",
+        onClick: function onClick(ev) {
+          return delToDo(index);
+        }
+      }))));
     }
 
     return null;
   }
 
+  _react.default.useEffect(function () {
+    var loaded = JSON.parse(localStorage.getItem('list')) || [];
+    setList(function () {
+      return loaded;
+    });
+  }, []);
+
+  _react.default.useEffect(function () {
+    if (list == null) return;
+    localStorage.setItem('list', JSON.stringify(list));
+  }, [list]);
+
+  if (list == null) return null;
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("form", {
-    onSubmit: Todo
+    onSubmit: AddToDo
   }, /*#__PURE__*/_react.default.createElement("input", {
     type: "text",
     name: "text",
@@ -32287,9 +32337,10 @@ function Principal() {
     return /*#__PURE__*/_react.default.createElement(Item, {
       element: element,
       filtro: filter,
-      index: index
+      index: index,
+      key: index
     });
-  }));
+  }), console.log(list));
 }
 
 var _default = Principal;
@@ -39334,10 +39385,10 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-_fontawesomeSvgCore.library.add(_freeSolidSvgIcons.faBars, _freeSolidSvgIcons.faLightbulb, _freeSolidSvgIcons.faCircle, _freeSolidSvgIcons.faCheckCircle);
+_fontawesomeSvgCore.library.add(_freeSolidSvgIcons.faBars, _freeSolidSvgIcons.faLightbulb, _freeSolidSvgIcons.faCircle, _freeSolidSvgIcons.faCheckCircle, _freeSolidSvgIcons.faTrashAlt);
 
 function Main() {
-  var _useState = (0, _react.useState)(false),
+  var _useState = (0, _react.useState)(true),
       _useState2 = _slicedToArray(_useState, 2),
       notOn = _useState2[0],
       notOnEstado = _useState2[1];
@@ -39428,7 +39479,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54127" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62646" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
